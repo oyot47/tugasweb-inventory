@@ -16,36 +16,6 @@
                 </div>
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
-                    {{-- <div class="btn-list">
-                        <span class="d-none d-sm-inline">
-                            <a href="#" class="btn">
-                                New view
-                            </a>
-                        </span>
-                        <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
-                            data-bs-target="#modal-report">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 5l0 14" />
-                                <path d="M5 12l14 0" />
-                            </svg>
-                            Save
-                        </a>
-                        <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                            data-bs-target="#modal-report" aria-label="Create new report">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 5l0 14" />
-                                <path d="M5 12l14 0" />
-                            </svg>
-                        </a>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -63,7 +33,7 @@
 
                 <div class="col-12 col-lg-8">
                     <div class="card card-md">
-                        <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('barang.create') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-header">
                                 <a href="{{ route('barang.index') }}" class="btn btn-icon">
@@ -98,22 +68,8 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label required">Satuan</label>
-                                            <select name="satuan_id"
-                                                class="form-select @error('satuan_id') is-invalid @enderror" id="satuan_id">
-                                                <option value="">Pilih Satuan</option>
-                                                @foreach ($satuans as $item)
-                                                    <option value="{{ $item->id }}" @selected(old('satuan_id') == $item->id)>
-                                                        {{ $item->nama_satuan }}
-                                                    </option>
-                                                @endforeach
-
-                                            </select>
-                                            @error('satuan_id')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        
+                                        
 
                                         <div class="mb-3">
                                             <label class="form-label required">Kategori</label>

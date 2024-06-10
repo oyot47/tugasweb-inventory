@@ -10,6 +10,7 @@
                     <div class="page-pretitle">
                         Home
                     </div>
+                    
                     <h2 class="page-title">
                         Dashboard
                     </h2>
@@ -21,7 +22,7 @@
             </div>
         </div>
     </div>
-    <!-- Page body -->
+    <!-- Page body --> @if(auth()->user()->role === 'admin')
     <div class="page-body">
         <div class="container-xl">
             <div class="row row-deck row-cards mb-4">
@@ -33,9 +34,7 @@
                                 <div class="card-body">
                                     <div class="row align-items-center">
                                         <div class="col-auto">
-                                            <span
-                                                class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
-
+                                            <span class="bg-primary text-white avatar">
                                                 <i class="ti ti-stack-2 icon"></i>
                                             </span>
                                         </div>
@@ -56,9 +55,7 @@
                                 <div class="card-body">
                                     <div class="row align-items-center">
                                         <div class="col-auto">
-                                            <span
-                                                class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-
+                                            <span class="bg-green text-white avatar">
                                                 <i class="ti ti-transfer-in icon"></i>
                                             </span>
                                         </div>
@@ -118,13 +115,11 @@
                         </div>
                     </div>
                 </div>
-
-
+@endif
                 <div class="col-12">
                     <div class="card card-md">
                         <div class="card-stamp card-stamp-lg">
                             <div class="card-stamp-icon bg-primary">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -140,154 +135,61 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-10">
-                                    <h3 class="h1">Welcome, {{ auth()->user()->name }}</h3>
+                                    <h3 class="h1">Selamat Datang, {{ auth()->user()->name }}</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Chart -->
+               
+                        <div class="card-body">
+                            <canvas id="myChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Chart -->
 
             </div>
 
-            <div class="row row-cards">
-                <div class="col-12 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Barang Masuk Terakhir</h3>
-                        </div>
-                        <div class="list-group list-group-flush list-group-hoverable">
-                            @foreach ($riwayatBarangMasuk as $row)
-                                <div class="list-group-item">
-                                    <div class="row align-items-center">
-
-                                        <div class="col text-truncate">
-                                            <a href="{{ route('barang-masuk.show', $row->barangMasuk->id) }}"
-                                                target="_blank"
-                                                class="text-reset text-secondary d-block">#{{ $row->barangMasuk->no_transaksi }}</a>
-                                            <div class="d-block  text-truncate">
-                                                <i class="ti ti-box-align-bottom text-secondary"></i>
-                                                {{ $row->barang->nama_barang }} ({{ $row->barang->kode }})
-                                            </div>
-                                            <div class="d-block  text-truncate"><i
-                                                    class="ti ti-transfer-in text-secondary"></i>
-                                                {{ $row->qty }}
-                                            </div>
-                                            <div class="d-block  text-truncate">
-                                                <i class="ti ti-calendar-due text-secondary"></i>
-                                                {{ \Carbon\Carbon::parse($row->barangMasuk->tgl_masuk)->format('d M Y') }}
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <a href="#"
-                                                class="list-group-item-actions"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-secondary"
-                                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path
-                                                        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-                                                    </path>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Barang Keluar Terakhir</h3>
-                        </div>
-                        <div class="list-group list-group-flush list-group-hoverable">
-                            @foreach ($riwayatBarangKeluar as $row)
-                                <div class="list-group-item">
-                                    <div class="row align-items-center">
-
-                                        <div class="col text-truncate">
-                                            <a href="{{ route('barang-keluar.show', $row->barangKeluar->id) }}"
-                                                target="_blank"
-                                                class="text-reset text-secondary d-block">#{{ $row->barangKeluar->no_transaksi }}</a>
-                                            <div class="d-block  text-truncate">
-                                                <i class="ti ti-box-align-bottom text-secondary"></i>
-                                                {{ $row->barang->nama_barang }} ({{ $row->barang->kode }})
-                                            </div>
-                                            <div class="d-block  text-truncate"><i
-                                                    class="ti ti-transfer-out text-secondary"></i>
-                                                {{ $row->qty }}
-                                            </div>
-                                            <div class="d-block  text-truncate">
-                                                <i class="ti ti-calendar-due text-secondary"></i>
-                                                {{ \Carbon\Carbon::parse($row->barangKeluar->tgl_keluar)->format('d M Y') }}
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <a href="#"
-                                                class="list-group-item-actions"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-secondary"
-                                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path
-                                                        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-                                                    </path>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Stok Info</h3>
-                        </div>
-                        <div class="list-group list-group-flush">
-                            @foreach ($stokWarningInfo as $row)
-                                <div class="list-group-item">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            @if ($row->stok == 0)
-                                                <i class="ti ti-alert-triangle icon text-danger"></i>
-                                            @else
-                                                <i class="ti ti-info-circle icon text-warning"></i>
-                                            @endif
-                                        </div>
-
-                                        <div class="col text-truncate">
-                                            <a href="#"
-                                                class="text-reset text-secondary d-block">{{ $row->nama_barang }}
-                                                ({{ $row->kode }})
-                                            </a>
-
-                                            <div class="d-block  text-truncate">
-                                                Sisa Stok : {{ $row->stok }}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            @endforeach
-
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <!-- Other card sections... -->
         </div>
     </div>
+    @if(auth()->user()->role === 'admin')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Produk', 'Barang Masuk', 'Barang Keluar'], // Tambahkan 'Produk' ke labels
+            datasets: [{
+                label: 'Jumlah',
+                data: [{{ $totalProduk }}, {{ $totalBarangMasuk }}, {{ $totalBarangKeluar }}], // Tambahkan $totalProduk ke data
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.5)', // Warna kuning untuk produk
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                ],
+                borderColor: [
+                    'rgba(255, 206, 86, 1)', // Warna kuning untuk produk
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    }); // Penutup tambahan untuk myChart
+</script>
+@endif
 @endsection
+
+

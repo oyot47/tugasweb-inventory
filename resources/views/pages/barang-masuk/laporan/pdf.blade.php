@@ -68,22 +68,22 @@
                 @php
                     //encode logo ke base64
                     // $image = public_path('/img/').\Setting::getSetting()->logo;
-                    $image = 'https://www.solonohio.org/ImageRepository/Document?documentID=11108';
+                    $image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZxZ-UWCmZO6j4P6HDpZIyjJg992Giwqf9SA&s';
 
                     // Read image path, convert to base64 encoding
                     $imageData = base64_encode(file_get_contents($image));
                 @endphp
                 <img width="100px" height="100px"
-                    src="data:image/png;base64, {{ base64_encode(file_get_contents('https://www.solonohio.org/ImageRepository/Document?documentID=11108')) }}"
+                    src="data:image/png;base64, {{ base64_encode(file_get_contents('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZxZ-UWCmZO6j4P6HDpZIyjJg992Giwqf9SA&s')) }}"
                     alt="">
             </td>
             <td style="text-align: center; width: 200px;">
 
-                <div style="font-size: 24px">PT. CONTOH SAJA</div>
+                <div style="font-size: 24px">PT. AMANAH KOMPUTER</div>
                 <div style="font-size: 24px"></div>
-                <div style="font-size: 16px">Jl. Tani Bersaudara No. 9 Johor Medan</div>
-                <div style="font-size: 16px">Telp : (061) 7755 - 440 - Hp : 0819 1234 1231</div>
-                <div style="font-size: 16px">Email : legalisat@gmail.com</div>
+                <div style="font-size: 16px">Jl. Ke Surga Lewat Jalur VIP</div>
+                <div style="font-size: 16px">Telp : (061) 1504 - 004 - Hp : 0813 1522 2004</div>
+                <div style="font-size: 16px">Email : amanahcomp@gmail.com</div>
             </td>
             <td style="text-align: right; width: 50px;">
 

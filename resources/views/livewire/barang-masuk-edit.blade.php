@@ -77,7 +77,7 @@
                 @endforeach
                 <div class="row mt-4">
                     <div class="d-grid">
-                        <button class="btn btn-outline-secondary btn-block" wire:click="addInput">Add Item</button>
+                        <button class="btn btn-outline-secondary btn-block" wire:click="addInput">Tambah Item</button>
                     </div>
                 </div>
             </div>

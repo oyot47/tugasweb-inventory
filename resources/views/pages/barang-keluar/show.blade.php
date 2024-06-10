@@ -76,12 +76,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="h3">Perusahaan</p>
+                                    <p class="h3">PT. AMANAH KOMPUTER</p>
                                     <address>
-                                        Street Address<br>
-                                        State, City<br>
-                                        Region, Postal Code<br>
-                                        ltd@example.com
+                                        Jl. Ke Surga Lewat Jalur VIP<br>
+                                        HP : 0813 1522 2004<br>
+                                        amanahcomp@gmail.com
                                     </address>
                                 </div>
                                 <div class="col-6 text-end">
@@ -169,19 +168,18 @@
                             <path d="M12 9v4" />
                             <path d="M12 17h.01" />
                         </svg>
-                        <h3>Are you sure?</h3>
-                        <div class="text-secondary">Do you really want to remove this data? What you've done cannot be
-                            undone.</div>
+                        <h3>Apakah kamu yakin?</h3>
+                        <div class="text-secondary">Apakah Anda benar-benar ingin menghapus data ini? Apa yang telah Anda lakukan tidak dapat dibatalkan.</div>
                     </div>
                     <div class="modal-footer">
                         <div class="w-100">
                             <div class="row">
                                 <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
-                                        Cancel
+                                        Batal
                                     </a></div>
                                 <div class="col"><button type="submit" class="btn btn-danger w-100"
                                         data-bs-dismiss="modal">
-                                        Yes, Delete
+                                        Ya, Hapus
                                     </button></div>
                             </div>
                         </div>

@@ -76,12 +76,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="h3">Perusahaan</p>
+                                    <p class="h3">PT. AMANAH KOMPUTER</p>
                                     <address>
-                                        Street Address<br>
-                                        State, City<br>
-                                        Region, Postal Code<br>
-                                        ltd@example.com
+                                        Jl. Ke Surga Lewat Jalur VIP<br>
+                                        HP : 0813 1522 2004<br>
+                                        amanahcomp@gmail.com
                                     </address>
                                 </div>
                                 <div class="col-6 text-end">

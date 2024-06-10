@@ -17,24 +17,24 @@
                                     class="navbar-brand-image">
                             </a>
                         </div>
-                        <form class="card card-md" action="{{ route('register') }}" method="post">
+                        <form class="card card-md" action="{{ route('Registrasi') }}" method="post">
                             @csrf
                             <div class="card-body">
-                                <h2 class="card-title text-center mb-4">Create new account</h2>
+                                <h2 class="card-title text-center mb-4">Buat akun baru</h2>
                                 <div class="mb-3">
                                     <label class="form-label">{{ __('Name') }}</label>
                                     <input type="text" name="name" value="{{ old('name') }}"
                                         class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="{{ __('Name') }}">
+                                        placeholder="{{ __('Nama') }}">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Email address') }}</label>
+                                    <label class="form-label">{{ __('Email') }}</label>
                                     <input type="email" name="email" value="{{ old('email') }}"
                                         class="form-control @error('email') is-invalid @enderror"
-                                        placeholder="{{ __('Email Address') }}">
+                                        placeholder="{{ __('Email') }}">
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -49,21 +49,21 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Repeat Password') }}</label>
+                                    <label class="form-label">{{ __('Ulangi Password') }}</label>
                                     <input type="password" name="password_confirmation"
                                         class="form-control form-control-user @error('password_confirmation') is-invalid @enderror"
-                                        placeholder="{{ __('Repeat Password') }}">
+                                        placeholder="{{ __('Ulangi Password') }}">
                                     @error('password_confirmation')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-footer">
-                                    <button type="submit" class="btn btn-primary w-100">Create new account</button>
+                                    <button type="submit" class="btn btn-primary w-100">Buat akun baru</button>
                                 </div>
                             </div>
                         </form>
                         <div class="text-center text-secondary mt-3">
-                            Already have account? <a href="{{ route('login') }}" tabindex="-1">Sign in</a>
+                            Sudah memiliki akun? <a href="{{ route('login') }}" tabindex="-1">Masuk</a>
                         </div>
                     </div>
                 </div>

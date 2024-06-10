@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Laravel Inventori</title>
+    <title>Sistem Inventori</title>
     <!-- CSS files -->
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
 
@@ -45,7 +45,7 @@
                     <a href=".">
                         {{-- <img src="./static/logo.svg" width="110" height="32" alt="Tabler"
                             class="navbar-brand-image"> --}}
-                        Laravel
+                        PT. AMANAH KOMPUTER
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">

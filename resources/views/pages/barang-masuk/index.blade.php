@@ -124,7 +124,7 @@
                                                     <a class="dropdown-item text-danger" href="#"
                                                         onclick="handleDelete(`{{ route('barang-masuk.destroy', $row->id) }}`)">
                                                         <i class="ti ti-trash icon me-2 opacity-50"></i>
-                                                        Delete
+                                                        Hapus
                                                     </a>
                                                 </div>
 

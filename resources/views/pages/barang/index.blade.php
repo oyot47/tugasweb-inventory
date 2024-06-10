@@ -17,10 +17,12 @@
                 <!-- Page title actions -->
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
+                    @if(auth()->user()->role === 'admin')
                         <a href="{{ route('barang.import.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                             <i class="ti ti-table-import icon"></i>
                             Import
                         </a>
+                        
                         <a href="{{ route('barang.pdf') }}" target="_blank"
                             class="btn btn-primary d-none d-sm-inline-block">
                             <i class="ti ti-file-export icon"></i>
@@ -31,6 +33,7 @@
                             <i class="ti ti-table-export icon"></i>
                             Excel
                         </a>
+                        @endif
                         <a href="{{ route('barang.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -109,7 +112,7 @@
                                         {{-- <th>Gambar</th>
                                         <th>Kode</th> --}}
                                         <th>Barang</th>
-                                        <th>Satuan</th>
+                                        
                                         <th>Kategori</th>
                                         <th class="text-center">Stok</th>
                                         <th class="text-end">Harga</th>
@@ -127,8 +130,6 @@
                                                 <div class="d-flex py-1 align-items-top">
                                                     <a data-fslightbox="gallery"
                                                         href="{{ asset('storage/' . $row->gambar) }}">
-                                                        <span class="avatar me-2"
-                                                            style="background-image: url({{ asset('storage/' . $row->gambar) }})"></span>
 
                                                     </a>
                                                     <div class="flex-fill">
@@ -139,9 +140,7 @@
                                                 </div>
                                             </td>
 
-                                            <td class="align-text-top" data-label="Satuan">
-                                                {{ $row->satuan->nama_satuan }}
-                                            </td>
+                                           
                                             <td class="align-text-top" data-label="Kategori">
                                                 @forelse ($row->kategoris as $item)
                                                     <span

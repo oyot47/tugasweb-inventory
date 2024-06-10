@@ -10,10 +10,10 @@
 
 <body>
 
-    <h4>PT. CONTOH SAJA</h4>
-    <p>Jl. Lembah Bening No 111</p>
-    <p>Pluta City - Jupiter</p>
-    <p>Phone Number : 01212234234</p>
+    <h4>PT. AMANAH KOMPUTER</h4>
+    <p>Jl. Ke Surga Lewat Jalur VIP</p>
+    <p>Email : amanahcomp@gmailcom</p>
+    <p>Phone Number : 0813 1522 2004</p>
 
     <p></p>
     <p>Data Barang</p>

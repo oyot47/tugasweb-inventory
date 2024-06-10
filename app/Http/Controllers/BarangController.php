@@ -42,44 +42,46 @@ class BarangController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBarangRequest $request)
-    {
-        $data = $request->except('gambar');
+    public function store(Request $request)
+{
+    $request->validate([
+        'nama_barang' => 'required',
+        'kode' => 'required|unique:barangs,kode',
+        'kategori_id' => 'required|array',
+        'harga' => 'required|numeric',
+        'stok' => 'required|numeric',
+        'min_stok' => 'required|numeric',
+        'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'keterangan' => 'nullable',
+    ]);
 
-        $data['kategori'] = $request->kategori_id;
-
-        try {
-            \DB::beginTransaction();
-
-            if (!empty($request->input('gambar'))) {
-                $newFilename = Str::after($request->input('gambar'), 'tmp/');
-                Storage::disk('public')->move($request->input('gambar'), "gambar/$newFilename");
-                $data['gambar'] = "gambar/$newFilename";
-            }
-
-            $barang = Barang::create($data);
-            $barang->kategoris()->sync($data['kategori_id']);
-            \DB::commit();
-
-            return redirect(route('barang.index'))->withSuccess('Barang created successfully');
-        } catch (\Exception $e) {
-            \DB::rollBack();
-            // if (Storage::exists('public/' . $data['image'])) {
-            //     Storage::delete('public/' . $data['image']);
-            // }
-
-
-            return back()->with('error', 'An error occurred: ' . $e->getMessage());
-        }
+    // Handle File Upload
+    if ($request->hasFile('gambar')) {
+        $imageName = time() . '.' . $request->gambar->extension();
+        $request->gambar->move(public_path('uploads'), $imageName);
+    } else {
+        $imageName = null;
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Barang $barang)
-    {
-        //
-    }
+    // Create Barang
+    $barang = new Barang();
+    $barang->nama_barang = $request->nama_barang;
+    $barang->kode = $request->kode;
+    // Set satuan_id to 1 automatically
+    $barang->satuan_id = 1;
+    $barang->harga = $request->harga;
+    $barang->stok = $request->stok;
+    $barang->min_stok = $request->min_stok;
+    $barang->gambar = $imageName;
+    $barang->keterangan = $request->keterangan;
+    $barang->save();
+
+    // Attach Kategori
+    $barang->kategoris()->attach($request->kategori_id);
+
+    return redirect()->route('barang.index')->with('success', 'Data barang berhasil ditambahkan!');
+}
+
 
     /**
      * Show the form for editing the specified resource.

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Barang extends Model
 {
     use HasFactory;
+    
 
     protected $fillable = [
         'nama_barang',

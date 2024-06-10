@@ -10,6 +10,7 @@ use App\Http\Controllers\FilepondController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\IndexPageController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\BarangExportController;
 use App\Http\Controllers\BarangImportController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangStokLaporanController;
 use App\Http\Controllers\BarangMasukLaporanController;
 use App\Http\Controllers\BarangKeluarLaporanController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,17 +40,19 @@ Route::get('/guest', function () {
     return view('layouts.guest');
 });
 
+
 // Route::get('/products', [ProductController::class, 'index']);
 // Route::get('/products', [ProductController::class, 'index']);
 
 Route::post('upload', [ImageController::class, 'upload'])->name('images.upload');
 Route::delete('revert', [ImageController::class, 'revert'])->name('images.revert');
-
-
+Route::post('register', [UserController::class, 'register'])->name('Registrasi');
+Route::post('login', [UserController::class, 'login'])->name('Login');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'IndexPageController@index')->name('index');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/home', [DashboardController::class, 'index']);
+    Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.admin');
 
     Route::resource('images', ImageController::class);
 
@@ -72,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/barang/import', [BarangImportController::class, 'create'])->name('barang.import.create');
     Route::post('/barang/import', [BarangImportController::class, 'store'])->name('barang.import.store');
     Route::resource('barang', BarangController::class);
+    Route::post('/barang/create', [BarangController::class, 'store'])->name('barang.create');
 
     Route::post('filepond', [FilepondController::class, 'store'])->name('filepond.store');
     Route::delete('filepond', [FilepondController::class, 'destroy'])->name('filepond.destroy');
